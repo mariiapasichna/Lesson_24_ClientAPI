@@ -51,6 +51,8 @@ public class UserApi {
         return target.path(path).request().delete(Response.class);
     }
 
+    //From the Jersey client API, the SyncInvoker class doesn't support a delete method with entity body as its argument.
+    //Exception in thread "main" java.lang.IllegalStateException: Entity must be null for http method DELETE.
     public Response testDelete(User user) {
         return target.request().method("DELETE", Entity.entity(user, MediaType.APPLICATION_JSON), Response.class);
     }
